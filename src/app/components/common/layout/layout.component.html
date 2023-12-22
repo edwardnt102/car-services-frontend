@@ -1,0 +1,233 @@
+<nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="sidebar-logo">
+      <a href="https://ng.ant.design/" target="_blank">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo" />
+        <h1>Car-Service</h1>
+      </a>
+    </div>
+    <ul
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipPlacement="right"
+        [nzTooltipTitle]="isCollapsed ? 'Dashboard' : ''"
+        routerLink="/admin/"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="ant-menu-item-selected"
+        class="out-line"
+      >
+        <i nz-icon nzType="dashboard"></i>
+        <span>Trang chủ</span>
+      </li>
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipPlacement="right"
+        [nzTooltipTitle]="isCollapsed ? 'Cars' : ''"
+        routerLink="/admin/car-brand"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="ant-menu-item-selected"
+        class="out-line"
+      >
+        <i nz-icon nzType="car"></i>
+        <span>QL Hãng Xe</span>
+      </li>
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipPlacement="right"
+        [nzTooltipTitle]="isCollapsed ? 'Cars' : ''"
+        routerLink="/admin/car-model"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="ant-menu-item-selected"
+        class="out-line"
+      >
+        <i nz-icon nzType="car"></i>
+        <span>QL Mẫu Xe</span>
+      </li>
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipPlacement="right"
+        [nzTooltipTitle]="isCollapsed ? 'Cars' : ''"
+        routerLink="/admin/cars"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="ant-menu-item-selected"
+        class="out-line"
+      >
+        <i nz-icon nzType="car"></i>
+        <span>QL Xe</span>
+      </li>
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipPlacement="right"
+        [nzTooltipTitle]="isCollapsed ? 'Owner-Car' : ''"
+        routerLink="/admin/car-owner"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="ant-menu-item-selected"
+        class="out-line"
+      >
+        <i nz-icon nzType="user"></i>
+        <span>QL Chủ Xe</span>
+      </li>
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipPlacement="right"
+        [nzTooltipTitle]="isCollapsed ? 'Worker' : ''"
+        routerLink="/admin/worker"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="ant-menu-item-selected"
+        class="out-line"
+      >
+        <i nz-icon nzType="user-switch"></i>
+        <span>QL Lao Động</span>
+      </li>
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipPlacement="right"
+        [nzTooltipTitle]="isCollapsed ? 'Staffs' : ''"
+        routerLink="/admin/staffs"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="ant-menu-item-selected"
+        class="out-line"
+      >
+        <i nz-icon nzType="user-add"></i>
+        <span>QL Nhân Viên</span>
+      </li>
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipPlacement="right"
+        [nzTooltipTitle]="isCollapsed ? 'Staffs' : ''"
+        routerLink="/admin/price"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="ant-menu-item-selected"
+        class="out-line"
+      >
+        <i nz-icon nzType="user-add"></i>
+        <span>QL Bảng Giá</span>
+      </li>
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipPlacement="right"
+        [nzTooltipTitle]="isCollapsed ? 'Staffs' : ''"
+        routerLink="/admin/place"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="ant-menu-item-selected"
+        class="out-line"
+      >
+        <i nz-icon nzType="user-add"></i>
+        <span>QL Khu Vực</span>
+      </li>
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipPlacement="right"
+        [nzTooltipTitle]="isCollapsed ? 'Staffs' : ''"
+        routerLink="/admin/subs"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="ant-menu-item-selected"
+        class="out-line"
+      >
+        <i nz-icon nzType="user-add"></i>
+        <span>QL Thuê Bao</span>
+      </li>
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipPlacement="right"
+        [nzTooltipTitle]="isCollapsed ? 'Staffs' : ''"
+        routerLink="/admin/company"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="ant-menu-item-selected"
+        class="out-line"
+      >
+        <i nz-icon nzType="user-add"></i>
+        <span>QL Đại Lý</span>
+      </li>
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipPlacement="right"
+        [nzTooltipTitle]="isCollapsed ? 'Staffs' : ''"
+        routerLink="/admin/rules"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="ant-menu-item-selected"
+        class="out-line"
+      >
+        <i nz-icon nzType="user-add"></i>
+        <span>QL Quy Định</span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <i
+            class="trigger"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          ></i>
+        </span>
+        <nz-avatar
+          nz-dropdown
+          nzTrigger="click"
+          [nzDropdownMenu]="menu"
+          nzIcon="user"
+          [nzSrc]="urlImage"
+          nz-button
+          [nzPlacement]="'bottomRight'"
+          class="custom-hover"
+        ></nz-avatar>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <div nz-menu class="p-0">
+            <div nz-menu-item class="custom-drop">
+              <nz-avatar [nzSize]="64" [nzSrc]="urlImage" class="mt-0"></nz-avatar>
+              <div class="custom-profile">
+                <h4 nz-typography class="mb-0">{{ userName }}</h4>
+                <P class="mb-0">Xem trang cá nhân của bạn</P>
+              </div>
+            </div>
+          </div>
+          <ul nz-menu>
+            <li nz-menu-item>
+              <h4 class="mb-0">Cập nhật thông tin</h4>
+            </li>
+            <li nz-menu-item (click)="logOut()">
+              <h4 class="mb-0">Đăng xuất</h4>
+            </li>
+          </ul>
+          <!-- <div nz-menu>
+            <div nz-menu-item class="custom-drop">
+                <h4 class="mb-0">t</h4>
+            </div>
+          </div> -->
+        </nz-dropdown-menu>
+      </div>
+    </nz-header>
+    <nz-content>
+      <nz-breadcrumb [nzAutoGenerate]="true"></nz-breadcrumb>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

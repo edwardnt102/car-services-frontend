@@ -1,0 +1,34 @@
+export interface OwnerData {
+    totalCount: number;
+    id: 10002;
+    userId: string;
+    building: string;
+    currentAccommodation: string;
+    firstSeller: string;
+    caregiver: string;
+    dateJoining: string;
+    endDate: string;
+    createdBy: string;
+    createdDate: string;
+    modifiedBy: string;
+    modifiedDate: string;
+    isDeleted: string;
+    user: string;
+    car: object;
+    address: string;
+    attachmentFile: string;
+    customerName: string;
+    dateOfBirth: string;
+    description: string;
+    email: string;
+    fullName: string;
+    history: string;
+    phoneNumber: string;
+    placeName: string;
+    roomAndOutNumber: string;
+    staffId: number;
+    staffName: string;
+    subtitle: string;
+    provinceId: number;
+    districtId: number;
+}

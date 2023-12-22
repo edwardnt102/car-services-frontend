@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+.progress-snip {
+    .ant-spin-nested-loading > div > .ant-spin {
+        top: 70px;
+    }
+}
+
+.custom-table .ant-spin-nested-loading > div > .ant-spin {
+    top: 70px;
+}

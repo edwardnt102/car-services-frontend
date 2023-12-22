@@ -1,0 +1,39 @@
+.login-form {
+    max-width: 450px;
+    min-width: 380px;
+    padding: 15px;
+    position: relative;
+    .progress-snip {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        background-color: #ffffff85;
+        .ant-spin-nested-loading > div > .ant-spin {
+            top: 70px;
+        }
+    }
+}
+
+.title-login {
+    margin-top: 250px;
+}
+
+.login-form-margin {
+    margin-bottom: 16px;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

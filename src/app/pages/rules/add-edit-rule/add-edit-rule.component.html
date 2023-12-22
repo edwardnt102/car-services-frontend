@@ -1,0 +1,184 @@
+<form
+  nz-form
+  [formGroup]="carModelForm"
+  (ngSubmit)="submitForm(carModelForm.value)"
+>
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzMd]="24" [nzLg]="12">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Mẫu xe</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="nameError">
+          <input
+            nz-input
+            formControlName="name"
+            placeholder="Mẫu xe"
+            [disabled]="true"
+          />
+          <ng-template #nameError let-control>
+            <ng-container> Chưa nhập mẫu xe! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Hãng xe</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="brandIdError">
+          <nz-select
+            formControlName="brandId"
+            nzShowSearch
+            nzServerSearch
+            nzPlaceHolder="Hãng xe"
+            [nzShowArrow]="false"
+            [nzFilterOption]="nzFilterOption"
+            (nzOnSearch)="search($event)"
+          >
+            <nz-option
+              *ngFor="let o of brands"
+              [nzLabel]="o.value"
+              [nzValue]="o.id"
+            >
+            </nz-option>
+          </nz-select>
+          <ng-template #brandIdError let-control>
+            <ng-container> Chưa nhập hãng xe! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Hạng xe</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="classIdError">
+          <nz-select
+            formControlName="classId"
+            nzShowSearch
+            nzServerSearch
+            nzPlaceHolder="Hạng xe"
+            [nzShowArrow]="false"
+            [nzFilterOption]="nzFilterOptionClass"
+            (nzOnSearch)="searchClass($event)"
+          >
+            <nz-option
+              *ngFor="let o of carClass"
+              [nzLabel]="o.value"
+              [nzValue]="o.id"
+            >
+            </nz-option>
+          </nz-select>
+          <ng-template #classIdError let-control>
+            <ng-container> Chưa nhập hạng xe! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7">LD phân hạng</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <input
+            nz-input
+            formControlName="note"
+            placeholder="Lý do phân hạng"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Chiều dài</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="longError">
+          <input nz-input formControlName="long" placeholder="Chiều dài" />
+          <ng-template #longError let-control>
+            <ng-container> Chưa nhập chiều dài! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Chiều rộng</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="wideError">
+          <input nz-input formControlName="wide" placeholder="Chiều rộng" />
+          <ng-template #wideError let-control>
+            <ng-container> Chưa nhập chiều rộng! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Chiều cao</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="highError">
+          <input nz-input formControlName="high" placeholder="Chiều cao" />
+          <ng-template #highError let-control>
+            <ng-container> Chưa nhập chiều cao! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzMd]="24" [nzLg]="12">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Cân nặng</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="heavyError">
+          <input nz-input formControlName="heavy" placeholder="Cân nặng" />
+          <ng-template #heavyError let-control>
+            <ng-container> Chưa nhập cân nặng! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7">Giá tham khảo</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <input
+            nz-input
+            formControlName="referencePrice"
+            placeholder="Giá tham khảo"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7">Ghi chú</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <input nz-input formControlName="subtitle" placeholder="Ghi chú" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7">Chi tiết TT</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <textarea
+            rows="4"
+            nz-input
+            formControlName="description"
+            placeholder="Ghi chú dài"
+          ></textarea>
+        </nz-form-control>
+      </nz-form-item>
+      <!-- <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Hình ảnh</nz-form-label>
+        <nz-form-control [nzSpan]="17">
+          <input
+            type="file"
+            multiple="multiple"
+            (change)="detectFiles($event)"
+          />
+          <div class="images-preview mt-2" *ngIf="attachmentFiles.length">
+            <div class="row">
+              <div
+                class="col-md-6 col-lg-3 col-xl-2"
+                formArrayName="file"
+                *ngFor="let photo of attachmentFiles.controls; let i = index"
+              >
+                <div class="card mb-3" [formGroupName]="i">
+                  <span> {{ photo.controls.fileName.value }}</span>
+                  <button
+                    type="button"
+                    (click)="removePhoto(i)"
+                    class="btn btn-danger remove-btn"
+                  >
+                    x
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nz-form-control>
+      </nz-form-item> -->
+    </div>
+    <div class="wrap-button">
+      <button nz-button nzType="primary">Lưu</button>
+      <button nz-button type="button" (click)="destroyModal(false)">Hủy</button>
+    </div>
+  </div>
+</form>
+<div class="custom-snip" *ngIf="loading">
+  <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+</div>

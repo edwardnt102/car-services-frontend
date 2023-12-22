@@ -1,0 +1,168 @@
+<form
+  nz-form
+  [formGroup]="validateForm"
+  (ngSubmit)="submitForm(validateForm.value)"
+>
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzMd]="24" [nzLg]="12">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Tài khoản</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="userErrorTpl">
+          <input nz-input formControlName="userName" placeholder="Tài khoản" />
+          <ng-template #userErrorTpl let-control>
+            <ng-container
+              *ngIf="
+                userName.hasError('required') || userName.hasError('whitespace')
+              "
+            >
+              Chưa nhập tài khoản!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Họ và tên</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="fullnameError">
+          <input nz-input formControlName="fullName" placeholder="Họ và tên" />
+          <ng-template #fullnameError let-control>
+            <ng-container> Chưa nhập họ tên! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Ngày sinh</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="dateOfError">
+          <nz-date-picker
+            [nzFormat]="dateFormat"
+            nzPlaceHolder="Ngày sinh"
+            formControlName="dateOfBirth"
+          ></nz-date-picker>
+          <ng-template #dateOfError let-control>
+            <ng-container> Chưa chọn ngày sinh! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>E-mail</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="emailError">
+          <input
+            nz-input
+            formControlName="email"
+            placeholder="Email"
+            type="email"
+          />
+          <ng-template #emailError let-control>
+            <ng-container *ngIf="email.hasError('required')">
+              Chưa nhập Email!
+            </ng-container>
+            <ng-container *ngIf="email.hasError('email')">
+              CHưa đúng định dạng Email!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Số ĐT</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="phonelError">
+          <input nz-input formControlName="phoneNumber" placeholder="Số ĐT" />
+          <ng-template #phonelError let-control>
+            <ng-container> Chưa nhập số điện thoại! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzMd]="24" [nzLg]="12">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Giới tính</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="genderError">
+          <!-- <input nz-input formControlName="mobile" placeholder="mobile" /> -->
+          <nz-select nzPlaceHolder="Giới tính" formControlName="gender">
+            <nz-option [nzLabel]="'Nam'" [nzValue]="'male'"></nz-option>
+            <nz-option [nzLabel]="'Nữ'" [nzValue]="'female'"></nz-option>
+          </nz-select>
+          <ng-template #genderError let-control>
+            <ng-container> Chưa chọn giới tính! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Địa chỉ</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="addressError">
+          <input nz-input formControlName="address" placeholder="Địa chỉ" />
+          <ng-template #addressError let-control>
+            <ng-container> Chưa nhập địa chỉ! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Tỉnh/TP</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="provinceError">
+          <nz-select
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Tỉnh/TP"
+            formControlName="provinceId"
+            (ngModelChange)="getDistrict($event)"
+          >
+            <nz-option
+              *ngFor="let province of provinces"
+              [nzLabel]="province.value"
+              [nzValue]="province.id"
+            ></nz-option>
+          </nz-select>
+          <ng-template #provinceError let-control>
+            <ng-container> Chưa chọn Tỉnh/Thành phố! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Quận/Huyện</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="districtError">
+          <nz-select
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Quận/Huyện"
+            formControlName="districtId"
+            (ngModelChange)="getWard($event)"
+          >
+            <nz-option
+              *ngFor="let district of districts"
+              [nzLabel]="district.value"
+              [nzValue]="district.id"
+            ></nz-option>
+          </nz-select>
+          <ng-template #districtError let-control>
+            <ng-container> Chưa chọn Quận/Huyện! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Phường/Xã</nz-form-label>
+        <nz-form-control [nzSpan]="17" [nzErrorTip]="wardError">
+          <nz-select
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Phường/Xã"
+            formControlName="wardId"
+          >
+            <nz-option
+              *ngFor="let ward of wards"
+              [nzLabel]="ward.value"
+              [nzValue]="ward.id"
+            ></nz-option>
+          </nz-select>
+          <ng-template #wardError let-control>
+            <ng-container> Chưa chọn Phường/Xã! </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div class="wrap-button">
+      <button nz-button nzType="primary">Lưu</button>
+      <button nz-button type="button" (click)="destroyModal(false)">Hủy</button>
+    </div>
+  </div>
+</form>
+<div class="custom-snip" *ngIf="loading">
+  <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+</div>
